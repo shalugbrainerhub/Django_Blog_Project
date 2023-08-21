@@ -1,0 +1,12 @@
+<!-- post_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <article>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.pub_date }}</p>
+        <p>{{ post.author }}</p>
+        <div>{{ post.content }}</div>
+        <!-- Display additional post details as needed -->
+    </article>
+{% endblock %}
