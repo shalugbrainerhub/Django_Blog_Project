@@ -74,12 +74,45 @@ WSGI_APPLICATION = 'BlogProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST': 'db',  # Use 'localhost' if the database is on the same machine
+        'PORT': '5432',       # Default PostgreSQL port
     }
 }
+
+
+
+
+
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'shalug.brainerhub@gmail.com'  
+EMAIL_HOST_PASSWORD = 'yolbcgzejyvkodjv' 
+
+
+
+
+
 
 
 # Password validation
@@ -118,7 +151,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+AUTHENTICATION_BACKENDS = [
+    'blog.auth.CustomModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]

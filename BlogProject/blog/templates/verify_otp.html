@@ -1,0 +1,22 @@
+{% extends 'nav.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- <link rel="stylesheet" href="{% static 'css/login.css' %}"> -->
+
+<div class="container">
+    <div class="login-box">
+        <h2>OTP Verification</h2>
+        <form method="post" action="{% url 'verify_otp' %}">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{ username }}">
+            <div class="input-group">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" name="otp" id="otp" required>
+            </div>
+            <button type="submit">Verify OTP</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,41 +1,44 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 
 
-# for Category model
-class Category(models.Model):
-    name=models.CharField(max_length=100)
-    slug=models.SlugField(unique=True)
+
+
+
+class UserRegistration(models.Model):
+    username=models.CharField(max_length=50, unique=True)
+    email=models.EmailField()
+    otp = models.PositiveIntegerField(blank=True, null=True)
+    otp_timestamp = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return self.name
-    
-
-
-
-# for Author model
-class Author(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE)
-    bio=models.TextField()
-    profile_picture=models.ImageField(upload_to="profile_pic/")
-
-    def __str__(self):
-        return self.user.username
+        return self.username
 
 
 
 
-
-
-# for Post model
 class Post(models.Model):
-    title=models.CharField(max_length=50)
-    content=models.TextField()
-    pub_date=models.DateTimeField(auto_now_add=True)
-    author=models.ForeignKey(Author, on_delete=models.CASCADE)
-    categories=models.ManyToManyField(Category,related_name="posts")
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    author = models.ForeignKey(UserRegistration, on_delete=models.CASCADE)
+    pub_date = models.DateTimeField(default=timezone.now)
+
 
     def __str__(self):
         return self.title
+
+
+
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(UserRegistration, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content

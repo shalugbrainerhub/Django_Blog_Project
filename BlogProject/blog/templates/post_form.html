@@ -1,10 +1,16 @@
-<!-- post_form.html -->
 {% extends 'base.html' %}
 {% block content %}
   <h2>Create New Post</h2>
+  {{ form.categories }}
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    
+    <div class="form-group">
+        <label for="{{ form.categories.id_for_label }}"></label>
+        {{ form.categories }}
+    </div>
+    
     <button type="submit">Create Post</button>
   </form>
 {% endblock %}

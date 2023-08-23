@@ -1,0 +1,27 @@
+/* Apply styling to the dashboard container */
+.dashboard-container {
+    background-color: #f7f7f7;
+    padding: 20px;
+}
+
+/* Style the posts list */
+.posts-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Style each post item */
+.post-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style links */
+.post-links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
