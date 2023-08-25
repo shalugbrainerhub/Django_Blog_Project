@@ -107,7 +107,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'shalug.brainerhub@gmail.com'  
-EMAIL_HOST_PASSWORD = 'yolbcgzejyvkodjv' 
+EMAIL_HOST_PASSWORD = 'YOURPASSCODE' 
 
 
 
